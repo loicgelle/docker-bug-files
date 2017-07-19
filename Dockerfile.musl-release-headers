@@ -1,0 +1,13 @@
+FROM demo-musl-build as build
+
+COPY contents-headers.tmp contents.tmp
+COPY artifacts-headers.tmp artifacts.tmp
+RUN mkdir -p /release
+RUN while read p; do cp --parents -r "$p" /release; done < contents.tmp
+RUN while read p; do touch -t 201707180000 "$p"; done < artifacts.tmp
+RUN rm contents.tmp
+RUN rm artifacts.tmp
+
+FROM scratch
+
+COPY --from=build /release /

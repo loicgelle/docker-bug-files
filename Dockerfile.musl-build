@@ -1,0 +1,10 @@
+FROM demo-base
+
+WORKDIR /build
+RUN git clone https://github.com/SRI-CSL/musllvm.git musl-libc
+
+# Building
+WORKDIR /build/musl-libc
+RUN CC=clang ./configure --disable-shared --target=LLVM --build=LLVM --prefix=/usr
+RUN make
+RUN make install

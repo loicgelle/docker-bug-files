@@ -1,0 +1,20 @@
+FROM demo-musl-headers as musl-libc-headers-files
+FROM demo-musl-libs as musl-libc-libs-files
+
+FROM demo-base
+
+# Bringing dependencies in
+COPY --from=musl-libc-headers-files / /
+COPY --from=musl-libc-libs-files / /
+
+# Getting source
+WORKDIR /build
+RUN curl "https://ftp.gnu.org/gnu/ncurses/ncurses-6.0.tar.gz" -o src.tar.gz
+RUN mkdir ncurses-6.0 && tar xf src.tar.gz -C ncurses-6.0 --strip-components 1
+
+# Building
+WORKDIR /build/ncurses-6.0
+RUN CC=clang ./configure --prefix=/usr
+RUN make LDFLAGS="-static"
+RUN make install
+

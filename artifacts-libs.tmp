@@ -1,0 +1,17 @@
+/release/usr/lib/Scrt1.o
+/release/usr/lib/crt1.o
+/release/usr/lib/crti.o
+/release/usr/lib/crtn.o
+/release/usr/lib/libc.a
+/release/usr/lib/libcrypt.a
+/release/usr/lib/libdl.a
+/release/usr/lib/libm.a
+/release/usr/lib/libpthread.a
+/release/usr/lib/libresolv.a
+/release/usr/lib/librt.a
+/release/usr/lib/libutil.a
+/release/usr/lib/libxnet.a
+/release/usr/lib/rcrt1.o
+/release/usr/lib
+/release/usr
+/release
